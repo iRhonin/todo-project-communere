@@ -1,12 +1,22 @@
 # Todo Project
 
+## Routes
+
+- Login: `/api/v1/login`
+- Developer Signup: `/api/v1/signup/developer`
+- Project Manager Signup: `/api/v1/signup/project-manager`
+- Projects (Create and List): `/api/v1/projects`
+- Tasks (Create and List): `/api/v1/tasks`
+- Assign a task: `/api/v1/tasks/:id/assign`
+- Assign a project: `/api/v1/tasks/:id/assign`
+
 ## Entities
 
 ### User
 
 - id
 - username
-- \_hashed_password
+- \_password
 - type
 - created_at
 - updated_at
@@ -41,12 +51,3 @@
 - developer_id
 - created_at
 - updated_at
-
-## Routes
-
-- Login: `/api/v1/login`
-- Signup: `/api/v1/signup`
-- Projects (Create and List): `/api/v1/projects`
-- Tasks (Create and List): `/api/v1/tasks`
-- Assign a task: `/api/v1/tasks/:id/assign`
-- Assign a project: `/api/v1/tasks/:id/assign`
