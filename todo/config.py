@@ -9,7 +9,7 @@ class Config(object):
     ENVIRONMENT = 'local'
     DEBUG = True
     LOGLEVEL = DEBUG_LVL
-    POSTGRES_HOST = 'db'
+    POSTGRES_HOST = 'localhost'
     POSTGRES_PORT = '5432'
     POSTGRES_DB = 'todo'
     POSTGRES_TEST_DB = 'todo_test'

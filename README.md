@@ -1,5 +1,21 @@
 # Todo Project
 
+## Run Server
+
+```bash
+docker-compose up -d
+```
+
+_Server will be up on `http://0.0.0.0:4321`_
+
+_Documents: `http://0.0.0.0:4321/apidocs`_
+
+## Run Tests
+
+```bash
+docker-compose run backend pytest -vvv
+```
+
 ## Routes
 
 - Login: `/api/v1/login`
