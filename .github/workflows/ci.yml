@@ -109,12 +109,11 @@ jobs:
           run --rm backend pytest -vvv --cov=./ --cov-report=xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
-          directory: ./coverage/reports/
-          env_vars: OS,PYTHON
-          fail_ci_if_error: true
           files: ./coverage.xml
+          name: codecov-todo # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
           flags: pytest
-          name: todo-codecov
-          verbose: true
+          env_vars: OS,PYTHON

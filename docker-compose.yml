@@ -13,6 +13,8 @@ services:
   backend:
     build: .
     image: ${CONTAINER_IMAGE:-todo-backend}
+    volumes:
+      - ./:/app/
     depends_on:
       - db
     environment:
