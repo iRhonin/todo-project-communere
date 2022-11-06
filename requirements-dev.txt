@@ -1,4 +1,5 @@
 black
-pytest
 pudb
+pytest
 pytest-pudb
+pytest-cov

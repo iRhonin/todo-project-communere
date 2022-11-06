@@ -25,6 +25,7 @@ class Config(object):
     SWAGGER = {
         "specs": [
             {
+                "openapi": "3.0.3",
                 "version": "1.0",
                 "title": "Todo Apis",
                 "endpoint": "api",

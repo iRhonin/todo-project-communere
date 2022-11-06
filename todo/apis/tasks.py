@@ -32,6 +32,10 @@ def add_task(body: TaskDto):
     """
     ---
     parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
       - name: body
         in: body
         type: string
@@ -97,6 +101,10 @@ def assign_task(body: AssignTaskDto, id: int):
     """
     ---
     parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
       - name: body
         in: body
         type: string

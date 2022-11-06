@@ -5,14 +5,19 @@ from logging import basicConfig
 import psycopg2
 import sqlalchemy
 from flasgger import Swagger
-from flask import Blueprint, Flask, jsonify
+from flask import Blueprint
+from flask import Flask
+from flask import jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from pydantic.error_wrappers import ValidationError
 
 from todo.config import configs
 from todo.exceptions import HTTPException
-from todo.orm import create_engine, init_model, session
+from todo.orm import create_engine
+from todo.orm import init_model
+from todo.orm import session
+
 
 basicConfig(level=configs.LOGLEVEL)
 app = Flask(__name__)

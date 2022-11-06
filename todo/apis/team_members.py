@@ -28,6 +28,10 @@ def add_team_member(body: TeamMemberDto):
     """
     ---
     parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
       - name: body
         in: body
         type: string

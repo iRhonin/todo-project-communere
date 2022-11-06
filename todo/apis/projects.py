@@ -27,7 +27,7 @@ from todo.schemas import TeamMemberDto
 from todo.schemas import TeamMemberSchema
 
 
-@api_v1.post('/projects')
+@api_v1.post("/projects")
 @validate()
 @authorize(Roles.PRODUCT_MANAGER)
 @json(ProjectSchema)
@@ -36,6 +36,10 @@ def add_project(body: ProjectDto):
     """
     ---
     parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
       - name: body
         in: body
         type: string
@@ -70,12 +74,17 @@ def add_project(body: ProjectDto):
     return project
 
 
-@api_v1.get('/projects')
+@api_v1.get("/projects")
 @authorize(Roles.PRODUCT_MANAGER)
 @json(ProjectSchema, use_list=True)
 def list_projects():
     """
     ---
+    parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
     responses:
       200:
         schema:
@@ -87,7 +96,7 @@ def list_projects():
     return projects
 
 
-@api_v1.get('/projects/<id>/tasks')
+@api_v1.get("/projects/<id>/tasks")
 @validate()
 @authorize(Roles.PRODUCT_MANAGER, Roles.DEVELOPER)
 @json(TaskSchema, use_list=True)
@@ -102,6 +111,10 @@ def list_project_tasks(id: int, query: ListProjectTasksQuery):
       - name: developerId
         in: query
         type: integer
+      - name: Authorization
+        in: header
+        type: string
+        required: true
     responses:
       200:
         schema:
