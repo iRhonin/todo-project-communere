@@ -1,19 +1,25 @@
 import functools
 from logging import getLogger
 
-from flask import jsonify, make_response
+from flask import jsonify
+from flask import make_response
 from flask.globals import request
 from flask_jwt_extended import create_access_token as _create_access_token
-from flask_jwt_extended import get_jwt, get_jwt_identity, verify_jwt_in_request
+from flask_jwt_extended import get_jwt
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import verify_jwt_in_request
 from flask_jwt_extended.exceptions import JWTExtendedException
 from jwt.exceptions import PyJWTError
 
 from todo.app import jwt
 from todo.config import configs
-from todo.exceptions import HTTP_PERMISION_DENIED, HTTP_UNAUTHORIZED
-from todo.models import Developer, ProductManager
+from todo.exceptions import HTTP_PERMISION_DENIED
+from todo.exceptions import HTTP_UNAUTHORIZED
+from todo.models import Developer
+from todo.models import ProductManager
 from todo.orm import session
 from todo.roles import *
+
 
 BEARER = 'Bearer '
 ROLE_KEY = 'role'
@@ -43,7 +49,7 @@ def authorize(*roles):
                 verify_jwt_in_request()
                 claims = get_jwt()
                 user_id = get_jwt_identity()
-                user_role = claims.get(ROLE_KEY, USER)
+                user_role = claims.get(ROLE_KEY)
 
                 if user_role not in roles:
                     raise HTTP_PERMISION_DENIED()

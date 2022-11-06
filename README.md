@@ -8,7 +8,7 @@
 - Projects (Create and List): `/api/v1/projects`
 - Tasks (Create and List): `/api/v1/tasks`
 - Assign a task: `/api/v1/tasks/:id/assign`
-- Assign a project: `/api/v1/tasks/:id/assign`
+- Add a developer to project: `/api/v1/team-members`
 
 ## Entities
 
@@ -33,20 +33,19 @@
 
 - id
 - name
+- project_id
 - created_at
 - updated_at
 
-### TaskAssignment
+### TaskDeveloper
 
-- id
-- project_id
+- task_id
 - developer_id
 - created_at
 - updated_at
 
-### ProjectAssignment
+### TeamMembers
 
-- id
 - project_id
 - developer_id
 - created_at

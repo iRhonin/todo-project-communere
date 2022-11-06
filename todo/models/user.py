@@ -1,8 +1,12 @@
 from argon2 import PasswordHasher
-from sqlalchemy import Column, Integer, Unicode
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import Unicode
+from sqlalchemy.orm import relationship
 from sqlalchemy.orm import synonym
 
-from todo.orm import TimestampMixin, base
+from todo.orm import TimestampMixin
+from todo.orm import base
 from todo.roles import Roles
 
 
@@ -40,12 +44,26 @@ class User(base, TimestampMixin):
 
 
 class Developer(User):
+    projects = relationship(
+        'Project',
+        secondary='team_members',
+        back_populates='team_members',
+    )
+
+    tasks = relationship(
+        'Task',
+        secondary='tasks_developers',
+        back_populates='developers',
+    )
+
     __mapper_args__ = {
         'polymorphic_identity': Roles.DEVELOPER,
     }
 
 
-class ProductManager(User):
+class ProductManager(Developer):
+    owned_projects = relationship('Project', back_populates='owner')
+
     __mapper_args__ = {
         'polymorphic_identity': Roles.PRODUCT_MANAGER,
     }
