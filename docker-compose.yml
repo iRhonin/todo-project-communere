@@ -12,7 +12,7 @@ services:
 
   backend:
     build: .
-    image: todo-backend
+    image: ${CONTAINER_IMAGE:-todo-backend}
     depends_on:
       - db
     environment:
