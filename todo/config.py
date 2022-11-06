@@ -37,30 +37,30 @@ class Config(object):
     def __init__(self):
         load_dotenv(find_dotenv())
 
-    #     for k, v in os.environ.items():
-    #         if not k.startswith('TODO_'):
-    #             continue
-    #         key = k.replace('TODO_', '')
-    #         v = self._cast(v)
+        for k, v in os.environ.items():
+            if not k.startswith('TODO_'):
+                continue
+            key = k.replace('TODO_', '')
+            v = self._cast(v)
 
-    #         setattr(self, key, v)
+            setattr(self, key, v)
 
-    # def _cast(self, v):
-    #     try:
-    #         v = float(v)
-    #         if v.is_integer():
-    #             v = int(v)
-    #     except ValueError:
-    #         if v == 'false':
-    #             v = False
-    #         elif v == 'true':
-    #             v = True
-    #         elif v == 'null' or v == 'None':
-    #             v = None
-    #         else:
-    #             pass
+    def _cast(self, v):
+        try:
+            v = float(v)
+            if v.is_integer():
+                v = int(v)
+        except ValueError:
+            if v == 'false':
+                v = False
+            elif v == 'true':
+                v = True
+            elif v == 'null' or v == 'None':
+                v = None
+            else:
+                pass
 
-    #     return v
+        return v
 
     @property
     def postgres_url(self):

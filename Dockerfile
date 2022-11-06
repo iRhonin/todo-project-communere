@@ -36,6 +36,7 @@ RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID $USER
 RUN mkdir -p /home/user/.config/pudb ; chown -R ${USER_ID}:${GROUP_ID} /home/user/.config/pudb
 
 COPY --from=prod --chown=$USER:$USER /app /app
+RUN chown -R ${USER_ID}:${GROUP_ID} /app
 
 ENV VIRTUAL_ENV=/opt/venv
 COPY --from=base-dev $VIRTUAL_ENV $VIRTUAL_ENV
