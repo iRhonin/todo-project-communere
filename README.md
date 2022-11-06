@@ -1,9 +1,12 @@
 # Todo Project
 
+[![CI](https://github.com/iRhonin/todo-project-communere/actions/workflows/ci.yml/badge.svg)](https://github.com/iRhonin/todo-project-communere/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/iRhonin/todo-project-communere/branch/main/graph/badge.svg?token=I3RB2LG5DD)](https://codecov.io/gh/iRhonin/todo-project-communere)
+
 ## Run Server
 
 ```bash
-docker-compose up -d
+docker-compose --build up -d
 ```
 
 _Server will be up on `http://0.0.0.0:4321`_
