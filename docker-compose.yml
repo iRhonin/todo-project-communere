@@ -1,0 +1,29 @@
+version: "3.6"
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: todo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres # For testing only
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    # command: python wsgi.py
+    command: gunicorn -b 0.0.0.0:5000 --workers 2 wsgi:app -t 60
+    # image: todo-backend
+    depends_on:
+      - db
+    environment:
+      - TODO_POSTGRES_DB=todo
+      - TODO_POSTGRES_HOST=db
+      - TODO_POSTGRES_USER=postgres21
+      - TODO_POSTGRES_PASSWORD=postgres
+    ports:
+      - 0.0.0.0:3000:5000
+
+volumes:
+  postgres_volume:
